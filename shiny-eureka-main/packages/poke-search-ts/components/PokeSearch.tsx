@@ -6,6 +6,8 @@ import styles from "../styles/Home.module.css";
 
 const { Search } = Input;
 
+const UNEXPECTED_ERROR_MESSAGE = 'Unexpected Error Occurred';
+
 interface Props {}
 
 export const PokeSearch: FC<Props> = ({}) => {
@@ -17,8 +19,11 @@ export const PokeSearch: FC<Props> = ({}) => {
         setResult(null);
        const fetchPokemon = async () => {
            try {
-               const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${search.toLowerCase()}`);
+               if (!search) {
+                   return;
+               }
 
+               const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${search.toLowerCase()}`);
 
                if (!response.ok) {
                    const responseText = await response.text();
@@ -35,7 +40,7 @@ export const PokeSearch: FC<Props> = ({}) => {
 
                setResult({ name, height, imageUrl: sprites?.front_default });
            } catch (error: any) {
-               setError('Unexpected Error Occurred');
+               setError(UNEXPECTED_ERROR_MESSAGE);
            }
        };
 
