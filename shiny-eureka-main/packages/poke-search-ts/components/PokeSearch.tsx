@@ -8,14 +8,13 @@ const { Search } = Input;
 
 const UNEXPECTED_ERROR_MESSAGE = 'Unexpected Error Occurred';
 
-interface Props {}
-
-export const PokeSearch: FC<Props> = ({}) => {
+export const PokeSearch: FC = () => {
     const [messageApi, contextHolder] = message.useMessage();
     const [search, setSearch] = useState<string>('');
     const [result, setResult] = useState<PokemonData | null>(null);
     const [error, setError] = useState<string>('');
 
+    // TODO would clean up this hook, and create a custom hook, so this logic could be extracted 'from the view'. useFetchPokemon
     useEffect(() => {
        setResult(null);
        const fetchPokemon = async () => {
@@ -48,6 +47,7 @@ export const PokeSearch: FC<Props> = ({}) => {
        fetchPokemon();
     }, [search]);
 
+    // TODO I would also show this in a custom hook, just to clean up the view like above. useErrorVisible
     useEffect(() => {
         if (!error) {
             return;

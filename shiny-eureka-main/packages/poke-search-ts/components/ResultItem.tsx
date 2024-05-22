@@ -6,6 +6,7 @@ interface Props {
     pokemon: PokemonData;
 }
 
+// TODO have the item always have space for the image so when it populated it doesn't move the input, and set a image size, width & height.
 export const ResultItem: FC<Props> = ({ pokemon }) => {
     const { name, height, imageUrl } = pokemon;
     const formattedHeight = `${height}cm`;

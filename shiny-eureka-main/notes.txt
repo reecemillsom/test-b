@@ -1,0 +1,16 @@
+Time spent:
+
+I spent around an hour on this project (otherwise I would have polished styles further) and fixed some layout issues.
+
+Approach:
+
+1. I spent some time playing around with the API a little.
+    - Started with the fetch, to handle when an item is not found and if we have a network issue (tested this by turning throttling on to offline.
+
+2. Built a Result item, to show the data, the image of the Pokemon & their name & height in CM.
+
+3. Connected the two together, got the data from the request response, and took what I needed and passed that as Props to the ResultItem.
+
+Action items:
+
+1. I wrote TODOs where if I had more time I would action my comments
