@@ -1,5 +1,5 @@
 import {ChangeEvent, FC, useEffect, useState} from 'react';
-import { Input } from 'antd';
+import {Input, message} from 'antd';
 import {ResultItem} from "./ResultItem";
 import {PokemonData} from "../types/PokemonData";
 import styles from "../styles/Home.module.css";
@@ -11,12 +11,13 @@ const UNEXPECTED_ERROR_MESSAGE = 'Unexpected Error Occurred';
 interface Props {}
 
 export const PokeSearch: FC<Props> = ({}) => {
+    const [messageApi, contextHolder] = message.useMessage();
     const [search, setSearch] = useState<string>('');
     const [result, setResult] = useState<PokemonData | null>(null);
     const [error, setError] = useState<string>('');
 
     useEffect(() => {
-        setResult(null);
+       setResult(null);
        const fetchPokemon = async () => {
            try {
                if (!search) {
@@ -47,6 +48,15 @@ export const PokeSearch: FC<Props> = ({}) => {
        fetchPokemon();
     }, [search]);
 
+    useEffect(() => {
+        if (!error) {
+            return;
+        }
+
+        messageApi.error(error);
+        setError('');
+    }, [error])
+
     const clearHandler = ({ currentTarget }: ChangeEvent<HTMLInputElement>) => {
         if (currentTarget.value === '') {
             setSearch('');
@@ -54,18 +64,21 @@ export const PokeSearch: FC<Props> = ({}) => {
     }
 
     return (
-        <div className={styles.searchContainer}>
-            <Search
-                className={styles.search}
-                placeholder="Search for your faviourite Pokemon"
-                onSearch={(value: string) => setSearch(value)}
-                onChange={clearHandler}
-                allowClear={true}
-            />
+        <>
+            {contextHolder}
+            <div className={styles.searchContainer}>
+                <Search
+                    className={styles.search}
+                    placeholder="Search for your faviourite Pokemon"
+                    onSearch={(value: string) => setSearch(value)}
+                    onChange={clearHandler}
+                    allowClear={true}
+                />
 
-            {result && (
-                <ResultItem pokemon={result} />
-            )}
-        </div>
+                {result && (
+                    <ResultItem pokemon={result} />
+                )}
+            </div>
+        </>
     )
 }
