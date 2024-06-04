@@ -113,4 +113,41 @@
     width: 100%;
     flex-direction: column;
   }
+
+  .searchContainer {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .search {
+    width: 100%;
+  }
+}
+
+
+/* NOTE: Input section */
+.searchContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 0 4rem 0;
+  min-height: 200px;
+}
+
+.resultItemContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.resultItemContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  color: rgb(0, 112, 234, 0.75)
+}
+
+.search {
+  width: 80%;
 }

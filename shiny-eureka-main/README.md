@@ -20,21 +20,16 @@ This repository is a monorepo managed by [Lerna](https://lerna.js.org/) and Yarn
 - [poke-search-ts](./packages/poke-search-ts/README.md)
 - [poke-search-js](./packages/poke-search-js/README.md)
 
-## Useful Commands
+## How to test
 
-```
-# Install all the dependencies
-yarn install
+1. This test was implemented in TS. Run `cd shiny-eureka-main/packages/poke-search-ts`.
 
-# Start the Nextjs TypeScript app
-cd packages/poke-search-ts
-yarn dev
+2. Run `yarn` - Install the dependencies of the project.
 
-# Start the Nextjs JavaScript app
-cd packages/poke-search-js
-yarn dev
-```
+3. Run `yarn dev` - Runs Next.js in development mode.
 
-## Example Design
+4. Run `yarn build` - To test creation of the production bundle.
 
-![Example](/example.png "Example")
+5. Run `yarn start` - Runs Next.js in production mode.
+
+6. Run `yarn lint` - Runs the linting on the Next.js project.
