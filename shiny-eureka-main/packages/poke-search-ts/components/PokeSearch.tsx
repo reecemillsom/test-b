@@ -14,7 +14,7 @@ export const PokeSearch: FC = () => {
     const [result, setResult] = useState<PokemonData | null>(null);
     const [error, setError] = useState<string>('');
 
-    // TODO would clean up this hook, and create a custom hook, so this logic could be extracted 'from the view'. useFetchPokemon
+    // TODO don't need a useEffect here, can achieve the same by just having a handler function.
     useEffect(() => {
        setResult(null);
        const fetchPokemon = async () => {
