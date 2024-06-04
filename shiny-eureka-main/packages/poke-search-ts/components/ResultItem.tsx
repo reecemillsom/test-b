@@ -13,11 +13,11 @@ export const ResultItem: FC<Props> = ({ pokemon }) => {
 
     return (
         <div className={styles.resultItemContainer}>
-            <img src={imageUrl} alt={name}/>
+            <img width={100} height={100} src={imageUrl} alt={name}/>
 
             <div className={styles.resultItemContent}>
-                <div>{name}</div>
-                <div>{formattedHeight}</div>
+                <div>Name: {name}</div>
+                <div>Height: {formattedHeight}</div>
             </div>
         </div>
     );

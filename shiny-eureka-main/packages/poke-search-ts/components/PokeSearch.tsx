@@ -38,7 +38,7 @@ export const PokeSearch: FC = () => {
 
                const { name, height, sprites } = await response.json();
 
-               setResult({ name, height, imageUrl: sprites?.front_default });
+               setResult({ name, height: height * 10, imageUrl: sprites?.front_default });
            } catch (error: any) {
                setError(UNEXPECTED_ERROR_MESSAGE);
            }
